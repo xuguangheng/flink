@@ -55,6 +55,7 @@ object StreamingJob {
           'format' = 'changelog-csv',
           'changelog-csv.column-delimiter' = '|'
         )""")
+
     tableEnvironment.executeSql("""
                                    CREATE VIEW UserScores AS (
                                    select id, max(name) as name from UserScores_source group by id)
@@ -74,23 +75,23 @@ object StreamingJob {
                                    CREATE VIEW UserName AS (
                                    select id, max(name) as name from UserName_source group by id)
                                    """).print()
-//    tableEnvironment.executeSql("""
-//                                 select * from UserScores
-//                                 """).print()
+    tableEnvironment.executeSql("""
+                                 select * from UserScores
+                                 """).print()
 
 
-    //    tableEnvironment.executeSql("""
-//        CREATE TABLE UserName (id INT, name STRING, PRIMARY KEY(id) NOT ENFORCED)
-//        WITH (
-//          'connector' = 'socket',
-//          'hostname' = 'localhost',
-//          'port' = '1111',
-//          'byte-delimiter' = '10',
-//          'format' = 'changelog-csv',
-//          'changelog-csv.column-delimiter' = '|'
-//        )""")
-//
-//
+        tableEnvironment.executeSql("""
+        CREATE TABLE UserName (id INT, name STRING, PRIMARY KEY(id) NOT ENFORCED)
+        WITH (
+          'connector' = 'socket',
+          'hostname' = 'localhost',
+          'port' = '1111',
+          'byte-delimiter' = '10',
+          'format' = 'changelog-csv',
+          'changelog-csv.column-delimiter' = '|'
+        )""")
+
+
     tableEnvironment.executeSql(
       """
          SELECT UserName.id as LID, UserName.name as LName, UserScores.id, UserScores. name
