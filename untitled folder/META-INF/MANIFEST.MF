@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: FlinkScala
+Build-id: 
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: guanghxu
+Implementation-Vendor-Id: org.example
+Created-By: Apache Maven 3.6.1
+Build-Jdk: 1.8.0_231
+
